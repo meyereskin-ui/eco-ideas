@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eco Ideas Namibia — Endless to Grow</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --green-dark: #0f5c1a;
+      --green-mid: #1a7a25;
+      --green-bright: #7dc142;
+      --green-light: #a8e063;
+      --gray-bg: #f2f2f0;
+      --off-white: #fafaf8;
+      --text-dark: #0d1a0f;
+      --text-mid: #2a3d2c;
+      --text-muted: #6b7d6c;
+      --white: #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--off-white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      height: 72px;
+      background: rgba(10, 40, 14, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(125,193,66,0.2);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo svg {
+      width: 38px; height: 38px;
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .nav-logo-text span:first-child {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+
+    .nav-logo-text span:last-child {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--green-bright);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--green-bright); }
+
+    .nav-cta {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      background: var(--green-bright);
+      padding: 10px 24px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--green-light); transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: var(--green-dark);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-bg-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 80px,
+          rgba(125,193,66,0.04) 80px,
+          rgba(125,193,66,0.04) 81px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 80px,
+          rgba(125,193,66,0.04) 80px,
+          rgba(125,193,66,0.04) 81px
+        );
+    }
+
+    .hero-accent-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--green-bright), var(--green-mid), transparent);
+    }
+
+    .hero-side-text {
+      position: absolute;
+      right: 60px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      transform-origin: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .hero-diamond {
+      position: absolute;
+      top: 50%;
+      right: 120px;
+      transform: translateY(-55%);
+      width: 480px;
+      height: 480px;
+      opacity: 0.12;
+    }
+
+    .hero-diamond::before,
+    .hero-diamond::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 2px solid var(--green-bright);
+      transform: rotate(45deg);
+    }
+
+    .hero-diamond::after {
+      inset: 40px;
+      border-color: var(--green-light);
+      animation: spin-slow 20s linear infinite;
+    }
+
+    @keyframes spin-slow {
+      to { transform: rotate(45deg) rotate(360deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 140px 60px 100px;
+      max-width: 900px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--green-bright);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--green-bright);
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(72px, 10vw, 130px);
+      line-height: 0.92;
+      color: var(--white);
+      letter-spacing: 2px;
+      margin-bottom: 32px;
+    }
+
+    .hero-title .accent {
+      color: var(--green-bright);
+      display: block;
+    }
+
+    .hero-subtitle {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.65);
+      max-width: 500px;
+      margin-bottom: 52px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      background: var(--green-bright);
+      color: var(--text-dark);
+      padding: 16px 36px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.25s;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 100%, 12px 100%);
+    }
+
+    .btn-primary:hover {
+      background: var(--green-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-outline:hover {
+      color: var(--green-bright);
+      border-color: var(--green-bright);
+    }
+
+    .hero-stats {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid rgba(125,193,66,0.2);
+    }
+
+    .stat-item {
+      padding: 32px 40px;
+      border-right: 1px solid rgba(125,193,66,0.15);
+      animation: fadeUp 0.6s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 42px;
+      color: var(--green-bright);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ─── SECTION COMMON ─── */
+    section { padding: 100px 60px; }
+
+    .section-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: var(--green-bright);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(42px, 5vw, 68px);
+      line-height: 1;
+      letter-spacing: 1px;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .section-title.light { color: var(--white); }
+
+    /* ─── ABOUT ─── */
+    .about {
+      background: var(--off-white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--text-mid);
+      margin-bottom: 20px;
+    }
+
+    .about-text p strong {
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .about-graphic {
+      position: relative;
+      height: 420px;
+    }
+
+    .about-card {
+      position: absolute;
+      background: var(--green-dark);
+      color: var(--white);
+      padding: 32px;
+    }
+
+    .about-card-main {
+      inset: 0 60px 60px 0;
+    }
+
+    .about-card-accent {
+      bottom: 0; right: 0;
+      width: 200px;
+      background: var(--green-bright);
+      color: var(--text-dark);
+      padding: 24px;
+    }
+
+    .about-card-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-bottom: 12px;
+    }
+
+    .about-card-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      line-height: 1;
+      color: var(--green-bright);
+    }
+
+    .about-card-accent .about-card-value {
+      color: var(--text-dark);
+      font-size: 36px;
+    }
+
+    .about-card-desc {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.6;
+      opacity: 0.75;
+      margin-top: 12px;
+    }
+
+    /* ─── LICENCES ─── */
+    .licences {
+      background: var(--text-dark);
+      padding: 100px 60px;
+    }
+
+    .licences-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 60px;
+    }
+
+    .licences-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .licence-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(125,193,66,0.12);
+      padding: 40px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s, border-color 0.3s;
+      cursor: default;
+    }
+
+    .licence-card:hover {
+      background: rgba(125,193,66,0.07);
+      border-color: rgba(125,193,66,0.4);
+    }
+
+    .licence-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--green-bright);
+      transition: height 0.4s ease;
+    }
+
+    .licence-card:hover::before { height: 100%; }
+
+    .licence-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: rgba(125,193,66,0.15);
+      line-height: 1;
+      margin-bottom: 8px;
+      transition: color 0.3s;
+    }
+
+    .licence-card:hover .licence-number { color: rgba(125,193,66,0.35); }
+
+    .licence-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--green-bright);
+      margin-bottom: 16px;
+    }
+
+    .licence-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .licence-size {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 20px;
+    }
+
+    .licence-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      background: rgba(125,193,66,0.12);
+      color: var(--green-bright);
+      border: 1px solid rgba(125,193,66,0.25);
+    }
+
+    .licence-invest {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 20px;
+    }
+
+    .licence-invest strong {
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    /* 5th card spans 2 cols on bottom row but we only have 5, let's handle with last 2 */
+    .licences-grid .licence-card:nth-child(4),
+    .licences-grid .licence-card:nth-child(5) {
+      /* keep uniform */
+    }
+
+    /* ─── COMMODITIES ─── */
+    .commodities {
+      background: var(--gray-bg);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .commodities-text {
+      padding: 100px 60px;
+    }
+
+    .commodities-text p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--text-mid);
+      margin-bottom: 40px;
+    }
+
+    .commodity-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .commodity-item {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      transition: padding-left 0.3s;
+    }
+
+    .commodity-item:hover { padding-left: 12px; }
+
+    .commodity-symbol {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: var(--green-mid);
+      width: 56px;
+      flex-shrink: 0;
+    }
+
+    .commodity-info strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .commodity-info span {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-muted);
+    }
+
+    .commodities-visual {
+      background: var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .commodities-visual::before {
+      content: '';
+      position: absolute;
+      inset: -20%;
+      background: radial-gradient(circle at 30% 70%, rgba(125,193,66,0.2) 0%, transparent 60%);
+    }
+
+    .hex-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      gap: 8px;
+    }
+
+    .hex {
+      width: 100px;
+      height: 114px;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+      transition: background 0.3s;
+    }
+
+    .hex:hover { background: rgba(125,193,66,0.25); }
+
+    .hex.filled { background: rgba(125,193,66,0.18); }
+
+    .hex-sym {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: var(--green-bright);
+      line-height: 1;
+    }
+
+    .hex-name {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+    }
+
+    /* ─── INVESTMENT ─── */
+    .investment {
+      background: var(--green-dark);
+      padding: 100px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .investment::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px;
+      height: 600px;
+      border: 1px solid rgba(125,193,66,0.1);
+      border-radius: 50%;
+    }
+
+    .investment::after {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 400px;
+      height: 400px;
+      border: 1px solid rgba(125,193,66,0.08);
+      border-radius: 50%;
+    }
+
+    .investment-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-bottom: 80px;
+    }
+
+    .investment-intro p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .invest-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .invest-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(125,193,66,0.15);
+      padding: 36px 32px;
+      position: relative;
+    }
+
+    .invest-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--green-bright);
+      transform: scaleX(0);
+      transition: transform 0.4s;
+    }
+
+    .invest-card:hover::after { transform: scaleX(1); }
+
+    .invest-epl {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green-bright);
+      margin-bottom: 8px;
+    }
+
+    .invest-prospect {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+
+    .invest-amount {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 44px;
+      color: var(--green-bright);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .invest-amount-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 20px;
+    }
+
+    .invest-includes {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 16px;
+    }
+
+    /* ─── CONTACT ─── */
+    .contact {
+      background: var(--off-white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 500px;
+    }
+
+    .contact-info {
+      padding: 100px 60px;
+    }
+
+    .contact-info p {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--text-mid);
+      margin-bottom: 48px;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .contact-item-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .contact-item-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-dark);
+      text-decoration: none;
+      display: block;
+      transition: color 0.2s;
+    }
+
+    .contact-item-value:hover { color: var(--green-mid); }
+
+    .contact-visual {
+      background: var(--green-mid);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-visual::before {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 400px;
+      height: 400px;
+      border: 2px solid rgba(125,193,66,0.2);
+      transform: rotate(45deg);
+    }
+
+    .contact-visual-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-visual-sub {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      max-width: 280px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-visual .btn-primary {
+      position: relative;
+      z-index: 1;
+      background: var(--white);
+      color: var(--green-dark);
+    }
+
+    .contact-visual .btn-primary:hover { background: var(--green-bright); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--text-dark);
+      padding: 40px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(125,193,66,0.15);
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+
+    .footer-logo span { color: var(--green-bright); }
+
+    .footer-copy {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-tagline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green-bright);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content { animation: fadeUp 0.8s ease 0.2s forwards; opacity: 0; transform: translateY(30px); }
+
+    .stat-item:nth-child(1) { animation-delay: 0.5s; }
+    .stat-item:nth-child(2) { animation-delay: 0.65s; }
+    .stat-item:nth-child(3) { animation-delay: 0.8s; }
+    .stat-item:nth-child(4) { animation-delay: 0.95s; }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--text-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--green-bright); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 4L36 32H4L20 4Z" fill="#7dc142" opacity="0.9"/>
+      <path d="M20 10L30 28H10L20 10Z" fill="#0f5c1a"/>
+      <path d="M12 36L20 22L28 36" fill="#7dc142" opacity="0.6"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span>ecoideas</span>
+      <span>Endless to Grow</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#licences">Our EPLs</a></li>
+    <li><a href="#commodities">Commodities</a></li>
+    <li><a href="#investment">Investment</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Enquire Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-accent-bar"></div>
+  <div class="hero-side-text">Namibia · 2026 · Erongo Region</div>
+  <div class="hero-diamond"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Eco Ideas Namibia</div>
+    <h1 class="hero-title">
+      Rare Earth
+      <span class="accent">Unlimited</span>
+    </h1>
+    <p class="hero-subtitle">
+      A Delaware-registered mining investment company holding five Exclusive Prospecting Licences across uranium, tin, tantalite, and lithium deposits in Namibia's most productive mineral belts.
+    </p>
+    <div class="hero-actions">
+      <a href="#licences" class="btn-primary">Explore Our EPLs</a>
+      <a href="#investment" class="btn-outline">Investment Opportunities</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-number">5</div>
+      <div class="stat-label">Exclusive Prospecting Licences</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">71K+</div>
+      <div class="stat-label">Total Hectares Covered</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">4</div>
+      <div class="stat-label">Target Commodities</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">$6.4M</div>
+      <div class="stat-label">Total Exploration Opportunity</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text">
+    <div class="section-eyebrow">Who We Are</div>
+    <h2 class="section-title">Built for<br/>Africa's<br/>Future</h2>
+    <p>
+      <strong>Eco Ideas Namibia</strong> is a subsidiary of Eco Ideas Corporation (USA), registered in April 2026 under Namibia's foreign company registration act. We focus on mining, mining investment, and mining consultancy across Namibia's richest mineral provinces.
+    </p>
+    <p>
+      Upon registration, the company secured five Exclusive Prospecting Licences covering high-priority mineralisation of uranium, tin, tantalite, and lithium — critical resources for the global energy transition and advanced manufacturing.
+    </p>
+    <p>
+      Our EPLs sit within world-class geological belts, including the Sandamap–Erongo Pegmatite Belt and the Welwitschia uranium province, placing us in direct proximity to producing mines and established mineral systems.
+    </p>
+  </div>
+  <div class="about-graphic">
+    <div class="about-card about-card-main">
+      <div class="about-card-label">Registered</div>
+      <div class="about-card-value">2026</div>
+      <p class="about-card-desc">Incorporated in April 2026 under Namibia's foreign company registration act as a subsidiary of a Delaware corporation.</p>
+    </div>
+    <div class="about-card about-card-accent">
+      <div class="about-card-label">Focus Area</div>
+      <div class="about-card-value">NAM</div>
+      <p class="about-card-desc" style="color: rgba(0,0,0,0.6); margin-top:8px; font-size:12px;">Erongo Region & Damara Belt</p>
+    </div>
+  </div>
+</section>
+
+<!-- LICENCES -->
+<section class="licences" id="licences">
+  <div class="licences-header">
+    <div>
+      <div class="section-eyebrow" style="color:rgba(125,193,66,0.8)">Our Portfolio</div>
+      <h2 class="section-title light">Five Licences.<br/>One Vision.</h2>
+    </div>
+    <p style="max-width:340px; font-size:15px; font-weight:300; color:rgba(255,255,255,0.5); line-height:1.8;">
+      Each EPL has been strategically selected for proximity to producing mines, proven geological systems, and strong investment upside.
+    </p>
+  </div>
+
+  <div class="licences-grid">
+
+    <!-- EPL 11652 -->
+    <div class="licence-card">
+      <div class="licence-number">11652</div>
+      <div class="licence-name">EPL 11652</div>
+      <div class="licence-title">Sandamap Sn–Ta–Li Prospect</div>
+      <div class="licence-size">17,371 Ha · Usakos District</div>
+      <div class="licence-tags">
+        <span class="tag">Tin</span>
+        <span class="tag">Tantalite</span>
+        <span class="tag">Lithium</span>
+      </div>
+      <div class="licence-invest">
+        Exploration investment: <strong>$1.2M USD</strong><br/>
+        <span style="font-size:12px; opacity:0.7;">Trenching · Geophysics · 10 drill holes</span>
+      </div>
+    </div>
+
+    <!-- EPL 11654 -->
+    <div class="licence-card">
+      <div class="licence-number">11654</div>
+      <div class="licence-name">EPL 11654</div>
+      <div class="licence-title">Goanikontes West Prospect</div>
+      <div class="licence-size">2,124 Ha · Erongo Region</div>
+      <div class="licence-tags">
+        <span class="tag">Uranium</span>
+      </div>
+      <div class="licence-invest">
+        Exploration investment: <strong>$500K USD</strong><br/>
+        <span style="font-size:12px; opacity:0.7;">2.5 km from Goanikontes Uranium Deposit</span>
+      </div>
+    </div>
+
+    <!-- EPL 11655 -->
+    <div class="licence-card">
+      <div class="licence-number">11655</div>
+      <div class="licence-name">EPL 11655</div>
+      <div class="licence-title">White Lady Uranium Prospect</div>
+      <div class="licence-size">1,687 Ha · NW of Uis Town</div>
+      <div class="licence-tags">
+        <span class="tag">Uranium</span>
+      </div>
+      <div class="licence-invest">
+        Exploration investment: <strong>$1.2M USD</strong><br/>
+        <span style="font-size:12px; opacity:0.7;">~7Mt @ 160–200 ppm U₃O₈ historical estimate</span>
+      </div>
+    </div>
+
+    <!-- EPL 11656 -->
+    <div class="licence-card">
+      <div class="licence-number">11656</div>
+      <div class="licence-name">EPL 11656</div>
+      <div class="licence-title">Dorstrivier South Prospect</div>
+      <div class="licence-size">19,815 Ha · Central Damara Belt</div>
+      <div class="licence-tags">
+        <span class="tag">Uranium</span>
+      </div>
+      <div class="licence-invest">
+        Exploration investment: <strong>$1.5M USD</strong><br/>
+        <span style="font-size:12px; opacity:0.7;">Calcrete-hosted, amenable to open-pit</span>
+      </div>
+    </div>
+
+    <!-- EPL 11657 -->
+    <div class="licence-card">
+      <div class="licence-number">11657</div>
+      <div class="licence-name">EPL 11657</div>
+      <div class="licence-title">Valencia East Prospect</div>
+      <div class="licence-size">30,696 Ha · Erongo Region</div>
+      <div class="licence-tags">
+        <span class="tag">Uranium</span>
+      </div>
+      <div class="licence-invest">
+        Exploration investment: <strong>$2M USD</strong><br/>
+        <span style="font-size:12px; opacity:0.7;">13 km from Valencia Uranium Deposit (ML 149)</span>
+      </div>
+    </div>
+
+    <!-- CTA Card -->
+    <div class="licence-card" style="background: rgba(125,193,66,0.08); border-color: rgba(125,193,66,0.3); display:flex; flex-direction:column; justify-content:center; align-items:flex-start;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--white); margin-bottom:16px; line-height:1.2;">
+        Request Full<br/>Technical Report
+      </div>
+      <p style="font-size:13px; font-weight:300; color:rgba(255,255,255,0.5); line-height:1.7; margin-bottom:28px;">
+        Detailed geological data, exploration targets, and investment structures available upon request.
+      </p>
+      <a href="#contact" class="btn-primary" style="clip-path:none;">Contact Us</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMMODITIES -->
+<section class="commodities" id="commodities">
+  <div class="commodities-text">
+    <div class="section-eyebrow">What We Hold</div>
+    <h2 class="section-title">Critical<br/>Minerals</h2>
+    <p>
+      Our EPLs target the commodities driving the global energy transition — uranium for nuclear power, lithium for battery storage, and rare metals for advanced manufacturing.
+    </p>
+    <div class="commodity-list">
+      <div class="commodity-item">
+        <div class="commodity-symbol">U</div>
+        <div class="commodity-info">
+          <strong>Uranium</strong>
+          <span>Nuclear fuel · EPLs 11654, 11655, 11656, 11657</span>
+        </div>
+      </div>
+      <div class="commodity-item">
+        <div class="commodity-symbol">Sn</div>
+        <div class="commodity-info">
+          <strong>Tin</strong>
+          <span>Electronics & soldering · EPL 11652</span>
+        </div>
+      </div>
+      <div class="commodity-item">
+        <div class="commodity-symbol">Ta</div>
+        <div class="commodity-info">
+          <strong>Tantalite</strong>
+          <span>Capacitors & aerospace alloys · EPL 11652</span>
+        </div>
+      </div>
+      <div class="commodity-item">
+        <div class="commodity-symbol">Li</div>
+        <div class="commodity-info">
+          <strong>Lithium</strong>
+          <span>Batteries & energy storage · EPL 11652</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="commodities-visual">
+    <div class="hex-grid">
+      <div class="hex filled"><div class="hex-sym">U</div><div class="hex-name">Uranium</div></div>
+      <div class="hex"><div class="hex-sym">Sn</div><div class="hex-name">Tin</div></div>
+      <div class="hex filled"><div class="hex-sym">Ta</div><div class="hex-name">Tantalite</div></div>
+      <div class="hex"><div class="hex-sym">Li</div><div class="hex-name">Lithium</div></div>
+      <div class="hex filled"><div class="hex-sym">Au</div><div class="hex-name">Proximity</div></div>
+      <div class="hex"><div class="hex-sym">Cu</div><div class="hex-name">Proximity</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section class="investment" id="investment">
+  <div class="investment-header">
+    <div>
+      <div class="section-eyebrow" style="color:rgba(125,193,66,0.8)">Opportunity</div>
+      <h2 class="section-title light">Invest in<br/>Namibia's<br/>Ground</h2>
+    </div>
+    <div class="investment-intro">
+      <p>
+        Each EPL offers two clear entry points: a structured exploration investment covering trenching, geophysics, and drilling; or a full management buy-in where the licence is acquired and transferred to the buyer. Pricing is negotiated directly.
+      </p>
+    </div>
+  </div>
+
+  <div class="invest-cards">
+    <div class="invest-card">
+      <div class="invest-epl">EPL 11652</div>
+      <div class="invest-prospect">Sandamap Sn–Ta–Li</div>
+      <div class="invest-amount">$1.2M</div>
+      <div class="invest-amount-label">Exploration Investment</div>
+      <div class="invest-includes">Trenching · Geophysical surveys · 10 drill holes · Rare-metal pegmatite system</div>
+    </div>
+    <div class="invest-card">
+      <div class="invest-epl">EPL 11654</div>
+      <div class="invest-prospect">Goanikontes West Uranium</div>
+      <div class="invest-amount">$500K</div>
+      <div class="invest-amount-label">Exploration Investment</div>
+      <div class="invest-includes">Trenching · Geophysical surveys · 10 drill holes · Satellite of Goanikontes system</div>
+    </div>
+    <div class="invest-card">
+      <div class="invest-epl">EPL 11655</div>
+      <div class="invest-prospect">White Lady Uranium</div>
+      <div class="invest-amount">$1.2M</div>
+      <div class="invest-amount-label">Exploration Investment</div>
+      <div class="invest-includes">Trenching · Geophysical surveys · 10 drill holes · Historical RC drilling completed</div>
+    </div>
+    <div class="invest-card">
+      <div class="invest-epl">EPL 11656</div>
+      <div class="invest-prospect">Dorstrivier South</div>
+      <div class="invest-amount">$1.5M</div>
+      <div class="invest-amount-label">Exploration Investment</div>
+      <div class="invest-includes">Trenching · Geophysical surveys · 10 drill holes · Calcrete-hosted uranium</div>
+    </div>
+    <div class="invest-card">
+      <div class="invest-epl">EPL 11657</div>
+      <div class="invest-prospect">Valencia East Uranium</div>
+      <div class="invest-amount">$2M</div>
+      <div class="invest-amount-label">Exploration Investment</div>
+      <div class="invest-includes">Trenching · Geophysical surveys · 10 drill holes · Adjacent to major corridor</div>
+    </div>
+    <div class="invest-card" style="background:rgba(125,193,66,0.1); border-color:rgba(125,193,66,0.3); display:flex; flex-direction:column; justify-content:center;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:var(--white); margin-bottom:12px; line-height:1.3;">Management<br/>Buy-In Available</div>
+      <p style="font-size:13px; font-weight:300; color:rgba(255,255,255,0.55); line-height:1.7; margin-bottom:24px;">All EPLs are available for outright acquisition and transfer to the buyer. Price negotiated on enquiry.</p>
+      <a href="#contact" class="btn-primary">Enquire Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <div class="section-eyebrow">Get in Touch</div>
+    <h2 class="section-title">Let's Talk<br/>About the<br/>Ground</h2>
+    <p>
+      Whether you're a mining house, private equity investor, or strategic partner, we welcome enquiries about any of our five EPLs. Full technical documentation is available on request.
+    </p>
+    <div class="contact-details">
+      <div>
+        <div class="contact-item-label">USA Office</div>
+        <a href="tel:+12022942660" class="contact-item-value">+1 (202) 294-2660</a>
+      </div>
+      <div>
+        <div class="contact-item-label">Namibia Office</div>
+        <a href="tel:+264812921461" class="contact-item-value">+264 81 292 1461</a>
+      </div>
+      <div>
+        <div class="contact-item-label">Email</div>
+        <a href="mailto:veskin@6grain.com" class="contact-item-value">veskin@6grain.com</a>
+        <a href="mailto:mickal@arielmic.com" class="contact-item-value" style="margin-top:4px;">mickal@arielmic.com</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-visual">
+    <div class="contact-visual-title">Endless<br/>to Grow</div>
+    <p class="contact-visual-sub">
+      Eco Ideas Corporation USA · Eco Ideas Namibia<br/>
+      Delaware Incorporated · Registered Namibia 2026
+    </p>
+    <a href="mailto:veskin@6grain.com" class="btn-primary">Send an Enquiry</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">eco<span>ideas</span></div>
+  <div class="footer-copy">© 2026 Eco Ideas Namibia. All rights reserved.</div>
+  <div class="footer-tagline">Endless to Grow</div>
+</footer>
+
+</body>
+</html>
